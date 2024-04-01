@@ -1,17 +1,32 @@
 pipeline {
+
     agent any
+    
     stages {
-        stage('Checkout') {
+         stage('install') {
+          steps {
+              sh 'npm install'
+            }
+          }
+        
+          stage('start') {
+          steps {
+              sh 'npm start'
+            }
+          }
+        
+        stage('test') {
+          steps {
+              sh 'echo test'
+            }
+          }
+      
+        stage('Docker Comopse Up') {
             steps {
-                git 'https://github.com/NaseemKhan005/react-bank-app'
+               
+                    sh "echo docker-was-successfully-run"
+                
             }
         }
-        stage('Dependency Installation') {
-            steps {
-                sh 'npm install'  // Example command for installing dependencies
-            }
-        }
-        // Define more stages for build, test, and deploy
     }
 }
-
